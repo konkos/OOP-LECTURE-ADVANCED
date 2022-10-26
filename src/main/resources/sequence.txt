@@ -1,0 +1,6 @@
+1) Optionals
+2) Streams
+3) Unit Tests
+4) JDBC
+5) JPA
+6) Generics
