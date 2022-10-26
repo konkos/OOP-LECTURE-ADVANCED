@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/jdbctest
+    username: konkos
+    password: DemoAccount123!@#
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
