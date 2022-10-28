@@ -12,6 +12,31 @@ public class Main {
 
     public static void main(String[] args) {
 
+        GET_REQUEST();
+
+        POST_REQUEST();
+    }
+
+    private static void POST_REQUEST() {
+        String todoURL = "https://jsonplaceholder.typicode.com/todos";
+
+        Post post = new Post(1, 2, "myTitle", true);
+        Gson gson = new Gson();
+
+        var client = HttpClient.newHttpClient();
+        var request = HttpRequest.newBuilder(URI.create(todoURL))
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(post)))
+                .header("accept", "application/json").build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void GET_REQUEST() {
         String todoURL = "https://jsonplaceholder.typicode.com/todos";
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(URI.create(todoURL))
