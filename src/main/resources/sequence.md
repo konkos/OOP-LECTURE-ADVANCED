@@ -3,4 +3,7 @@
 + Unit Tests
 + JDBC
 + JPA
++ HTTP Requests
+    + Blocking
+    + Async
 + Generics
