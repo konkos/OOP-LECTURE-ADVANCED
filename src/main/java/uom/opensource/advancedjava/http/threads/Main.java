@@ -10,18 +10,11 @@ import java.util.concurrent.CompletableFuture;
 
 public class Main {
 
-    class MyThread extends Thread {
-
-    }
-
     public static void main(String[] args) {
         String todoURL = "https://jsonplaceholder.typicode.com/todos";
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(URI.create(todoURL))
                 .header("accept", "application/json").build();
-
-        Post[] posts;
-
 
         CompletableFuture<HttpResponse<String>> responseCompletableFuture =
                 client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
