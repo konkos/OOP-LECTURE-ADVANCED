@@ -14,7 +14,7 @@ public class Student {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "course_like",
+            name = "course_student",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<Course> registerdCourses;

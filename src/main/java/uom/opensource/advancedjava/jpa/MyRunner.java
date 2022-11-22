@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Scanner;
+
 @Component
 public class MyRunner implements CommandLineRunner {
 
@@ -44,6 +46,9 @@ public class MyRunner implements CommandLineRunner {
         studentRepository.updateStudent(student1, course1);
         studentRepository.updateStudent(student2, course2);
         studentRepository.updateStudent(student3, course3);
+
+        logger.info("PRESS A BUTTON TO EXIT");
+        new Scanner(System.in).next();
 
     }
 
