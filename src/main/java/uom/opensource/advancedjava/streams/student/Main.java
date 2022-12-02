@@ -1,5 +1,6 @@
 package uom.opensource.advancedjava.streams.student;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -29,8 +30,16 @@ public class Main {
         double passingGradeAvg = studentList.stream().filter(student -> student.getGpa() >= 5.0).mapToDouble(st -> st.getGpa()).average().getAsDouble();
         System.out.println("Average grade of the students that have a passing grade: " + passingGradeAvg);
 
-        //find all students that have a passing grade and their name starts with "J"
+        // find all students that have a passing grade and their name starts with "J"
         List<Student> jThatPassed = studentList.stream().filter(student -> student.getGpa() >= 5.0).filter(student -> student.getName().startsWith("J")).toList();
         System.out.println(jThatPassed);
+
+        // all students are graded on a scale of 0-10. Use map to migrate to a 0-100 scale
+        List<Student> students1 = studentList.stream().map(student -> new Student(student.getName(), student.getGpa() * 10)).toList();
+        System.out.println(students1);
+
+        // sort students based on their gpa
+        List<Student> studentsSorted = studentList.stream().sorted(Comparator.comparingDouble(Student::getGpa)).toList();
+        System.out.println(studentsSorted);
     }
 }
